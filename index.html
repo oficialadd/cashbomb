@@ -22,15 +22,37 @@
     /></noscript>
     <!-- End Meta Pixel Code -->
     <script>
-        // Número de WhatsApp con código de país y sin símbolos
-        const numero = "5493518513741";
+    // Números de WhatsApp con prefijo internacional
+    const numeros = [
+      "5493518010198",
+      "5493515141625"
+    ];
 
-        // Mensaje predeterminado codificado correctamente
-        const mensaje = encodeURIComponent("¡Hola! Quiero mi bono del 40%");
+    // Seleccionar uno al azar
+    const elegido = numeros[Math.floor(Math.random() * numeros.length)];
 
-        // Redirección directa al enlace de WhatsApp con mensaje
-        window.location.href = `https://wa.me/${numero}?text=${mensaje}`;
-    </script>
+    // Generar código único de 5 cifras
+    const codigoTracking = Math.floor(10000 + Math.random() * 90000);
+
+    // Crear mensaje con código
+    const mensaje = encodeURIComponent(
+      `¡Hola! Me interesa cargar fichas en Cashboom Casino. Código: ${codigoTracking}`
+    );
+
+    // 🔗 Reemplazá con tu propia URL del script web de Google Apps Script
+    const urlRegistro = `https://script.google.com/macros/s/AKfycbx1rcnsLVrtItTvsBrTHFz8oNIh0yaDfDwkLnWhDwqTT82eq1QBv3uGuvujLJg8HBU/exec?codigo=${codigoTracking}&numero=${elegido}`;
+
+    // Guardar y redirigir
+    fetch(urlRegistro)
+      .then(() => {
+        const urlWhatsApp = `https://wa.me/${elegido}?text=${mensaje}`;
+        window.location.href = urlWhatsApp;
+      })
+      .catch(() => {
+        const urlWhatsApp = `https://wa.me/${elegido}?text=${mensaje}`;
+        window.location.href = urlWhatsApp;
+      });
+  </script>
 </head>
 <body>
     <script> <script>
