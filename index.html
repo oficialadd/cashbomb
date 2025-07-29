@@ -40,7 +40,7 @@
 
     // Mensaje con el código
     const mensaje = encodeURIComponent(
-      `¡Hola! Me interesa cargar fichas en Cashboom Casino. Código: ${codigoTracking}`
+      `¡Hola! Quiero cargar mi Bono del 30% mi Código es: ${codigoTracking}`
     );
 
     // User-Agent y Referer para registro adicional (opcional)
@@ -48,7 +48,7 @@
     const referer = document.referrer;
 
     // 📌 REEMPLAZÁ esta URL con la de tu Google Apps Script
-    const scriptURL = "https://script.google.com/macros/s/AKfycbXXXXXXXXXXX/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbx1rcnsLVrtItTvsBrTHFz8oNIh0yaDfDwkLnWhDwqTT82eq1QBv3uGuvujLJg8HBU/exec";
 
     // Armar la URL para registrar
     const urlRegistro = `${scriptURL}?codigo=${codigoTracking}&origen=${origen}&numero=${encodeURIComponent(elegido)}&ua=${encodeURIComponent(userAgent)}&ref=${encodeURIComponent(referer)}`;
