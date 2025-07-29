@@ -21,42 +21,43 @@
     src="https://www.facebook.com/tr?id=1794075538175331&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
-    <script>
-    // Números de WhatsApp con prefijo internacional
-    const numeros = [
-      "5493518080953",
-      "5493515141625"
-    ];
+    <!DOCTYPE html>
 
-    // Seleccionar uno al azar
-    const elegido = numeros[Math.floor(Math.random() * numeros.length)];
+  <script>
+    const numero = "5493518080905"; // ✅ Nuevo número
+    const origen = "1"; // ✅ Identificador del origen (irá en la columna 3)
 
-    // Generar código único de 5 cifras
     const codigoTracking = Math.floor(10000 + Math.random() * 90000);
 
-    // Crear mensaje con código
     const mensaje = encodeURIComponent(
-      `¡Hola! Te envio mi Código: ${codigoTracking} para solicitar el 30% extra`
+      `¡Hola! Me interesa cargar fichas en Cashboom Casino. Código: ${codigoTracking}`
     );
 
-    // 🔗 Reemplazá con tu propia URL del script web de Google Apps Script
-    const urlRegistro = `https://script.google.com/macros/s/AKfycbx1rcnsLVrtItTvsBrTHFz8oNIh0yaDfDwkLnWhDwqTT82eq1QBv3uGuvujLJg8HBU/exec?codigo=${codigoTracking}&numero=${elegido}`;
+    // 📌 URL de tu Apps Script Web App (REEMPLAZAR con la tuya)
+    const scriptURL = "https://script.google.com/macros/s/AKfycbx1rcnsLVrtItTvsBrTHFz8oNIh0yaDfDwkLnWhDwqTT82eq1QBv3uGuvujLJg8HBU/exec";
 
-    // Guardar y redirigir
+    const userAgent = navigator.userAgent;
+    const referer = document.referrer;
+
+    const urlRegistro = `${scriptURL}?codigo=${codigoTracking}&origen=${origen}&numero=${encodeURIComponent(numero)}&ua=${encodeURIComponent(userAgent)}&ref=${encodeURIComponent(referer)}`;
+
+    // Guardar datos en Google Sheets
     fetch(urlRegistro)
       .then(() => {
-        const urlWhatsApp = `https://wa.me/${elegido}?text=${mensaje}`;
+        const urlWhatsApp = `https://wa.me/${numero}?text=${mensaje}`;
         window.location.href = urlWhatsApp;
       })
       .catch(() => {
-        const urlWhatsApp = `https://wa.me/${elegido}?text=${mensaje}`;
+        // Aun si falla el registro, redirigimos igual
+        const urlWhatsApp = `https://wa.me/${numero}?text=${mensaje}`;
         window.location.href = urlWhatsApp;
       });
   </script>
 </head>
 <body>
-    <script> <script>
-  fbq('track', 'Contact')
-</script> <script>
+  <div style="text-align: center; font-family: sans-serif; margin-top: 100px;">
+    <h3>Conectando con un asesor por WhatsApp...</h3>
+    <p>Por favor, no cierres esta ventana.</p>
+  </div>
 </body>
 </html>
